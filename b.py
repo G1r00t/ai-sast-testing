@@ -1,6 +1,7 @@
 from flask import Flask, request, session, jsonify
 import pickle
 import base64
+import json
 import yaml
 import hashlib
 import os
@@ -26,11 +27,13 @@ def load_profile():
     try:
         profile_data = request.json.get('profile_data')
         if profile_data:
-            # VULN: Unsafe deserialization of user-controlled data
+            # FIXED: Use JSON instead of pickle for safe deserialization
             decoded = base64.b64decode(profile_data)
-            profile = pickle.loads(decoded)  # Arbitrary code execution possible
-            return jsonify({"status": "success", "profile": str(profile)})
+            profile = json.loads(decoded)  # Safe deserialization
+            return jsonify({"status": "success", "profile": profile})
         return jsonify({"error": "No profile data provided"}), 400
+    except json.JSONDecodeError:
+        return jsonify({"error": "Invalid profile data"}), 400
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -46,8 +49,8 @@ def import_config():
     try:
         yaml_data = request.json.get('config')
         if yaml_data:
-            # VULN: Using unsafe YAML loader that can execute arbitrary Python code
-            config = yaml.load(yaml_data, Loader=yaml.Loader)  # Unsafe loader
+            # FIXED: Use safe_load to prevent arbitrary code execution
+            config = yaml.safe_load(yaml_data)  # Safe loader
             return jsonify({"status": "success", "config": config})
         return jsonify({"error": "No config provided"}), 400
     except Exception as e:
@@ -129,4 +132,4 @@ if __name__ == '__main__':
     print("  - POST /api/login")
     print("  - POST /api/register")
     print("  - GET  /api/status")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='127.0.0.1', port=5000)
