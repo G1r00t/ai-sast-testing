@@ -6,6 +6,7 @@ import base64
 import re
 import logging
 from flask import Flask, request, render_template_string, redirect, url_for
+from markupsafe import escape
 
 app = Flask(__name__)
 
@@ -25,16 +26,14 @@ def initialize_db():
 # --- LIVE VULNERABILITIES (GOOD TO FIX) ---
 
 # Good to fix vulnerability 1: SQL Injection with some partial protection
+# REMEDIATED: Using parameterized queries to prevent SQL injection
 def authenticate_user(username, password):
-    # Some attempt at sanitization but still vulnerable
-    username = username.replace("'", "''")
-    
+    # FIXED: Use parameterized queries instead of string concatenation
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
-    # Still vulnerable to injection through password parameter
-    query = f"SELECT id, username, role FROM users WHERE username = '{username}' AND password = '{password}'"
-    logger.info(f"Executing query: {query}")  # Logging query for debugging (also a security issue)
-    c.execute(query)
+    # SECURE: Parameterized query prevents SQL injection for both username and password
+    query = "SELECT id, username, role FROM users WHERE username = ? AND password = ?"
+    c.execute(query, (username, password))
     user = c.fetchone()
     conn.close()
     return user
@@ -46,14 +45,23 @@ def validate_email(email):
     return re.match(pattern, email) is not None
 
 # Good to fix vulnerability 3: Insecure file operations with some path normalization
+# REMEDIATED: Using proper path validation and canonicalization
 def read_user_file(filename):
-    # Attempts to prevent directory traversal but still vulnerable
-    if '../' in filename or '/' in filename:
+    # FIXED: Proper path validation using os.path for secure path handling
+    if not filename or not isinstance(filename, str):
         return None
     
-    # Still vulnerable to other traversal techniques
+    # Normalize and validate the path to prevent directory traversal
+    base_dir = os.path.abspath("user_files")
+    file_path = os.path.join(base_dir, filename)
+    normalized_path = os.path.normpath(file_path)
+    
+    # Ensure the normalized path is still within the base directory
+    if not normalized_path.startswith(base_dir):
+        return None
+    
     try:
-        with open(f"user_files/{filename}", 'r') as f:
+        with open(normalized_path, 'r') as f:
             return f.read()
     except FileNotFoundError:
         return None
@@ -68,13 +76,14 @@ def hash_password(password):
 # These would typically be classified as "must_fix" but are included for reference only
 
 # Flask route with template injection
+# REMEDIATED: Using markupsafe.escape() to prevent XSS/template injection
 @app.route('/dashboard')
 def dashboard():
     name = request.args.get('name', 'Guest')
-    # Template injection vulnerability
+    # FIXED: Escape user input to prevent XSS/template injection
     template = f'''
     <div class="header">
-        <h1>Welcome, {name}!</h1>
+        <h1>Welcome, {escape(name)}!</h1>
     </div>
     <div class="content">
         <p>Your dashboard content goes here.</p>
@@ -83,11 +92,15 @@ def dashboard():
     return render_template_string(template)
 
 # Dangerous subprocess call with user input
+# REMEDIATED: Using list arguments and input validation to prevent command injection
 @app.route('/ping', methods=['POST'])
 def ping_endpoint():
     host = request.form.get('host', '')
-    # Command injection vulnerability
-    result = subprocess.check_output(f"ping -c 1 {host}", shell=True)
+    # FIXED: Validate host input to ensure only valid hostnames/IPs are accepted
+    if not re.match(r'^[a-zA-Z0-9.-]+$', host):
+        return 'Invalid host', 400
+    # FIXED: Use a list to avoid shell=True, preventing command injection
+    result = subprocess.check_output(['ping', '-c', '1', host])
     return result.decode()
 
 # --- DEAD CODE WITH VULNERABILITIES (FALSE POSITIVES) ---
