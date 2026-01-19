@@ -1,0 +1,891 @@
+=== SCAN RESULTS ===
+Timestamp: 2026-01-09T17:30:54.290948
+
+{
+  "upload_result": {
+    "success": true,
+    "message": "File uploaded successfully",
+    "downloadUrl": "https://cdefense-ide-upload-files.s3.us-west-2.amazonaws.com/prod/4745/1c5920dd-120d-4c26-9ec1-54b57b176b58.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260109T115825Z&X-Amz-SignedHeaders=host&X-Amz-Expires=360&X-Amz-Credential=AKIAV52JLE2C5GOWQUM4%2F20260109%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Signature=e592e6d1eeace326e337b70740bf9c234e1628ed5a47cdf08fe3ee86bb93f231",
+    "fileName": "qina_changed_files_1ae4634f-9178-47c9-947c-b360ffcd80fa.zip",
+    "fileId": "prod/4745/1c5920dd-120d-4c26-9ec1-54b57b176b58.zip"
+  },
+  "scan_results": {
+    "status": "Ok",
+    "message": "IDE Branch scan completed successfully",
+    "response": {
+      "status": "SUCCESS",
+      "results": {
+        "Exposed Keys : secrets": {
+          "failureBuildPolicyResults": [],
+          "passedBuildPolicyResults": [
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "DENIED_LICENSE_COUNT",
+                "operator": "GREATER_THAN",
+                "value": "0"
+              },
+              "count": 0
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "SECRET_RULE_COUNT",
+                "operator": "GREATER_THAN",
+                "value": "0"
+              },
+              "count": 0
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "CRITICAL_SEVERITY_COUNT",
+                "operator": "GREATER_THAN",
+                "value": "2"
+              },
+              "count": 0
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "HIGH_SEVERITY_COUNT",
+                "operator": "GREATER_THAN",
+                "value": "12"
+              },
+              "count": 0
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "TITLE",
+                "operator": "CONTAINS",
+                "value": "sql injection"
+              },
+              "count": 0
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "DEPENDENCY_NAME",
+                "operator": "CONTAINS",
+                "value": "log4j"
+              },
+              "count": 0
+            }
+          ]
+        },
+        "Code Analysis : python": {
+          "failureBuildPolicyResults": [],
+          "passedBuildPolicyResults": [
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "DENIED_LICENSE_COUNT",
+                "operator": "GREATER_THAN",
+                "value": "0"
+              },
+              "count": 0
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "SECRET_RULE_COUNT",
+                "operator": "GREATER_THAN",
+                "value": "0"
+              },
+              "count": 0
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "CRITICAL_SEVERITY_COUNT",
+                "operator": "GREATER_THAN",
+                "value": "2"
+              },
+              "count": 2
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "HIGH_SEVERITY_COUNT",
+                "operator": "GREATER_THAN",
+                "value": "12"
+              },
+              "count": 7
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "TITLE",
+                "operator": "CONTAINS",
+                "value": "sql injection"
+              },
+              "count": 0
+            },
+            {
+              "message": "Success",
+              "rule": {
+                "operand": "DEPENDENCY_NAME",
+                "operator": "CONTAINS",
+                "value": "log4j"
+              },
+              "count": 0
+            }
+          ]
+        }
+      }
+    },
+    "counts": [
+      {
+        "fileName": "Exposed Keys : secrets",
+        "totalCount": 0,
+        "criticalCount": 0,
+        "highCount": 0,
+        "mediumCount": 0,
+        "lowCount": 0
+      },
+      {
+        "fileName": "Code Analysis : python",
+        "totalCount": 17,
+        "criticalCount": 2,
+        "highCount": 7,
+        "mediumCount": 7,
+        "lowCount": 1
+      }
+    ],
+    "newVulnerability": [
+      {
+        "filePath": "/app/b.py",
+        "name": "active-debug-code-flask"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "avoid-pickle"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "dangerous-subprocess-use"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "dangerous-system-call-audit"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "dangerous-template-string"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "debug-enabled"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "directly-returned-format-string"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "flask-prestodb-sqli"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "flask-without-url-path-prestodb-sqli"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "formatted-sql-query"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "render-template-string"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "sqlalchemy-execute-raw-query"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "subprocess-injection"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "subprocess-shell-true"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "tainted-os-command-stdlib-flask-secure-default"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "unspecified-open-encoding"
+      },
+      {
+        "filePath": "/app/b.py",
+        "name": "unspecified-open-encoding"
+      }
+    ],
+    "all_messages": [
+      {
+        "status": "Pending",
+        "message": "Connected successfully. Ready to receive scan requests."
+      },
+      {
+        "status": "Pending",
+        "message": "File upload completed. Scan initiated successfully."
+      },
+      {
+        "status": "Ok",
+        "message": "Scan was finished",
+        "response": {
+          "status": "SUCCESS",
+          "results": {
+            "Exposed Keys : secrets": {
+              "failureBuildPolicyResults": [],
+              "passedBuildPolicyResults": [
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "DENIED_LICENSE_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "0"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "SECRET_RULE_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "0"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "CRITICAL_SEVERITY_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "2"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "HIGH_SEVERITY_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "12"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "TITLE",
+                    "operator": "CONTAINS",
+                    "value": "sql injection"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "DEPENDENCY_NAME",
+                    "operator": "CONTAINS",
+                    "value": "log4j"
+                  },
+                  "count": 0
+                }
+              ]
+            },
+            "Code Analysis : python": {
+              "failureBuildPolicyResults": [],
+              "passedBuildPolicyResults": [
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "DENIED_LICENSE_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "0"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "SECRET_RULE_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "0"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "CRITICAL_SEVERITY_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "2"
+                  },
+                  "count": 2
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "HIGH_SEVERITY_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "12"
+                  },
+                  "count": 7
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "TITLE",
+                    "operator": "CONTAINS",
+                    "value": "sql injection"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "DEPENDENCY_NAME",
+                    "operator": "CONTAINS",
+                    "value": "log4j"
+                  },
+                  "count": 0
+                }
+              ]
+            }
+          }
+        },
+        "counts": [
+          {
+            "fileName": "Exposed Keys : secrets",
+            "totalCount": 0,
+            "criticalCount": 0,
+            "highCount": 0,
+            "mediumCount": 0,
+            "lowCount": 0
+          },
+          {
+            "fileName": "Code Analysis : python",
+            "totalCount": 17,
+            "criticalCount": 2,
+            "highCount": 7,
+            "mediumCount": 7,
+            "lowCount": 1
+          }
+        ],
+        "newVulnerability": [
+          {
+            "filePath": "/app/b.py",
+            "name": "active-debug-code-flask"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "avoid-pickle"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "dangerous-subprocess-use"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "dangerous-system-call-audit"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "dangerous-template-string"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "debug-enabled"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "directly-returned-format-string"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "flask-prestodb-sqli"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "flask-without-url-path-prestodb-sqli"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "formatted-sql-query"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "render-template-string"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "sqlalchemy-execute-raw-query"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "subprocess-injection"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "subprocess-shell-true"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "tainted-os-command-stdlib-flask-secure-default"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "unspecified-open-encoding"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "unspecified-open-encoding"
+          }
+        ]
+      },
+      {
+        "status": "Ok",
+        "message": "IDE Branch scan completed successfully",
+        "response": {
+          "status": "SUCCESS",
+          "results": {
+            "Exposed Keys : secrets": {
+              "failureBuildPolicyResults": [],
+              "passedBuildPolicyResults": [
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "DENIED_LICENSE_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "0"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "SECRET_RULE_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "0"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "CRITICAL_SEVERITY_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "2"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "HIGH_SEVERITY_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "12"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "TITLE",
+                    "operator": "CONTAINS",
+                    "value": "sql injection"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "DEPENDENCY_NAME",
+                    "operator": "CONTAINS",
+                    "value": "log4j"
+                  },
+                  "count": 0
+                }
+              ]
+            },
+            "Code Analysis : python": {
+              "failureBuildPolicyResults": [],
+              "passedBuildPolicyResults": [
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "DENIED_LICENSE_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "0"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "SECRET_RULE_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "0"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "CRITICAL_SEVERITY_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "2"
+                  },
+                  "count": 2
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "HIGH_SEVERITY_COUNT",
+                    "operator": "GREATER_THAN",
+                    "value": "12"
+                  },
+                  "count": 7
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "TITLE",
+                    "operator": "CONTAINS",
+                    "value": "sql injection"
+                  },
+                  "count": 0
+                },
+                {
+                  "message": "Success",
+                  "rule": {
+                    "operand": "DEPENDENCY_NAME",
+                    "operator": "CONTAINS",
+                    "value": "log4j"
+                  },
+                  "count": 0
+                }
+              ]
+            }
+          }
+        },
+        "counts": [
+          {
+            "fileName": "Exposed Keys : secrets",
+            "totalCount": 0,
+            "criticalCount": 0,
+            "highCount": 0,
+            "mediumCount": 0,
+            "lowCount": 0
+          },
+          {
+            "fileName": "Code Analysis : python",
+            "totalCount": 17,
+            "criticalCount": 2,
+            "highCount": 7,
+            "mediumCount": 7,
+            "lowCount": 1
+          }
+        ],
+        "newVulnerability": [
+          {
+            "filePath": "/app/b.py",
+            "name": "active-debug-code-flask"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "avoid-pickle"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "dangerous-subprocess-use"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "dangerous-system-call-audit"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "dangerous-template-string"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "debug-enabled"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "directly-returned-format-string"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "flask-prestodb-sqli"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "flask-without-url-path-prestodb-sqli"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "formatted-sql-query"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "render-template-string"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "sqlalchemy-execute-raw-query"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "subprocess-injection"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "subprocess-shell-true"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "tainted-os-command-stdlib-flask-secure-default"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "unspecified-open-encoding"
+          },
+          {
+            "filePath": "/app/b.py",
+            "name": "unspecified-open-encoding"
+          }
+        ]
+      }
+    ],
+    "detailed_findings": [
+      {
+        "id": "active-debug-code-flask",
+        "title": "active-debug-code-flask",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "active-debug-code-flask",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "avoid-pickle",
+        "title": "avoid-pickle",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "avoid-pickle",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "dangerous-subprocess-use",
+        "title": "dangerous-subprocess-use",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "dangerous-subprocess-use",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "dangerous-system-call-audit",
+        "title": "dangerous-system-call-audit",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "dangerous-system-call-audit",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "dangerous-template-string",
+        "title": "dangerous-template-string",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "dangerous-template-string",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "debug-enabled",
+        "title": "debug-enabled",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "debug-enabled",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "directly-returned-format-string",
+        "title": "directly-returned-format-string",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "directly-returned-format-string",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "flask-prestodb-sqli",
+        "title": "flask-prestodb-sqli",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "flask-prestodb-sqli",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "flask-without-url-path-prestodb-sqli",
+        "title": "flask-without-url-path-prestodb-sqli",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "flask-without-url-path-prestodb-sqli",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "formatted-sql-query",
+        "title": "formatted-sql-query",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "formatted-sql-query",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "render-template-string",
+        "title": "render-template-string",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "render-template-string",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "sqlalchemy-execute-raw-query",
+        "title": "sqlalchemy-execute-raw-query",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "sqlalchemy-execute-raw-query",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "subprocess-injection",
+        "title": "subprocess-injection",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "subprocess-injection",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "subprocess-shell-true",
+        "title": "subprocess-shell-true",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "subprocess-shell-true",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "tainted-os-command-stdlib-flask-secure-default",
+        "title": "tainted-os-command-stdlib-flask-secure-default",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "tainted-os-command-stdlib-flask-secure-default",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "unspecified-open-encoding",
+        "title": "unspecified-open-encoding",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "unspecified-open-encoding",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      },
+      {
+        "id": "unspecified-open-encoding",
+        "title": "unspecified-open-encoding",
+        "file": "/app/b.py",
+        "line": 0,
+        "severity": "medium",
+        "description": "",
+        "rule_id": "unspecified-open-encoding",
+        "type": "newVulnerability",
+        "code_snippet": "",
+        "cwe": [],
+        "references": []
+      }
+    ]
+  },
+  "zip_file": "/tmp/qina_changed_files_1ae4634f-9178-47c9-947c-b360ffcd80fa.zip"
+}
