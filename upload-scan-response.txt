@@ -1,5 +1,19 @@
 === SCAN RESULTS ===
 Timestamp: 2026-01-09T17:30:54.290948
+This is a test file to validate secret scanner line indexing.
+Nothing sensitive on this line.
+AWS Access Key example below (should be detected):
+AKIAIOSFODNN7EXAMPLE
+Some random text here.
+AWS Secret Key example below:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Another normal line.
+GitHub token example:ghp_8fK2LmZyYxQqP1V0RkEXAMPLE1234567890
+Yet another normal line.
+Slack token example:
+xoxb-123456789012-123456789012-abcdefghijklmnop
+Presigned S3 URL example (NOT an AWS key, but often flagged):
+https://example-bucket.s3.us-west-2.amazonaws.com/test.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260109T115825Z&X-Amz-Signature=abcdef1234567890
+End of file.
 
 {
   "upload_result": {
